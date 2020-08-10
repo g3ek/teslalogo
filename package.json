@@ -1,0 +1,23 @@
+{
+  "name": "teslabrowser",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": "",
+  "license": "",
+  "author": "geek",
+  "scripts": {
+    "build": "parcel build index.html",
+    "dev": "parcel index.html --open",
+    "start": "npm run build && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildwebpack": "webpack"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "phaser": "^3.24.1",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
