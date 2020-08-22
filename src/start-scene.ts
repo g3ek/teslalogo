@@ -1,11 +1,13 @@
 import {Slider} from "./slider";
 import {ColorSlider} from "./color-slider";
 import {ColorWheel} from "./color-wheel";
+import {Button} from "./button";
 
 export class StartScene extends Phaser.Scene {
 
   preload(): void {
-    this.load.svg("teslalogo", "assets/svg/Tesla_Motors.svg")
+    this.load.svg("teslalogo", "assets/svg/Tesla_Motors.svg");
+    this.load.bitmapFont('atari', 'assets/fonts/atari-smooth.png', 'assets/fonts/atari-smooth.xml');
   }
 
   create(): void {
@@ -48,12 +50,33 @@ export class StartScene extends Phaser.Scene {
       teslalogo.setTint(colorWheel.color);
     });
 
+    let orientationButton = new Button(this, 20, 500, 185, 50, "Portrait");
+    orientationButton.toggleVisible();
+    orientationButton.setAction(() => {
+      if (this.scale.gameSize.width === 1280) {
+        //this.scale.stopFullscreen();
+        this.scale.setGameSize(720, 1280);
+        teslalogo.setScale(3.5);
+        teslalogo.setX(360);
+        teslalogo.setY(640); // why do I have to -60 ?!
+        orientationButton.setText("Portrait");
+      } else {
+        //this.scale.startFullscreen();
+        this.scale.setGameSize(1280, 720);
+        teslalogo.setScale(2);
+        teslalogo.setX(640); // why do I have to -60 ?!
+        teslalogo.setY(360);
+        orientationButton.setText("Landscape");
+      }
+    })
+
+
+
     teslalogo.on('pointerup', () => {
       speedSlider.toggleVisible();
       colorWheel.toggleVisible();
+      orientationButton.toggleVisible();
     });
-
-
   }
 }
 
