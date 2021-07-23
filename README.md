@@ -11,3 +11,6 @@ Click/tap on the logo to bring up the controls:
 - speed slider
 - color wheel
 - orientation button to switch between landscape and portrait
+
+Demo:
+https://spiff.be/teslalogo/
